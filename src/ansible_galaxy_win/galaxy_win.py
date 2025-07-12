@@ -1,5 +1,9 @@
 import sys, types
 
+import os
+os.get_blocking = lambda x: True
+os.isatty = lambda x: False
+
 import locale
 locale.getlocale = lambda: ('en_US', 'UTF-8')
 
@@ -82,8 +86,7 @@ dummy_termios.tcsendbreak = tcsendbreak
 
 sys.modules["termios"] = dummy_termios
 
-pointless_imports = ["fcntl", "fork"]
-
+# Stub out some modules that don't really matter
 for dummy in ["fcntl", "fork", "grp", "pwd"]:
     sys.modules[dummy] = types.ModuleType(dummy)
 
@@ -124,9 +127,11 @@ def execute_download_win(galaxy_commandline_args):
     yourself.
 
     :param galaxy_commandline_args: List[str] representing the arguments you would pass when calling ansible-galaxy on
-    the command line. Example:
-    To represent calling "ansible-galaxy collection download community.general"
-    Call with something like:
+    the command line.
+
+    Example represent calling "ansible-galaxy collection download community.general" from the command line
+
+    Call execute_download_win() with something like:
      args = ['collection', 'download', 'community.general']
      execute_download_win(args)
     """
@@ -135,3 +140,12 @@ def execute_download_win(galaxy_commandline_args):
     from ansible.cli.galaxy import main as galaxy_main
     galaxy = galaxy_main(args=args)
     galaxy.execute_download()
+
+
+def main():
+    import sys
+    print(f'Calling ansible-galaxy with {sys.argv[1:]}')
+    execute_download_win(sys.argv[1:])
+
+if __name__ == '__main__':
+    main()

@@ -15,5 +15,8 @@ dependencies = [
     "ansible"
 ]
 
+[project.scripts]
+ansible-galaxy-win = "ansible_galaxy_win.galaxy_win:main"
+
 [project-urls]
 Homepage = "https://github.com/annonm/ansible-galaxy-win"
