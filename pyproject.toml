@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ansible-galaxy-win"
+version = "1.0"
+description = "Allows for downloading of Ansible collections on Windows"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name = "Annon", email = "annonm@gmail.com"}
+]
+dependencies = [
+    "ansible"
+]
