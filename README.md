@@ -10,7 +10,7 @@ Look, I get it - I'm not here to judge. We all know you can't use Windows as a C
 
 ### THIS DOES NOT FULLY PORT ANSIBLE (OR ITS GALAXY SUB COMMAND) TO WINDOWS. IT SIMPLY ENABLES THE ABILITY TO DOWNLOAD A COLLECTION AND CALLING ANYTHING OTHER THAN EXECUTE_DOWNLOAD IS UNDEFINED. YOU HAVE BEEN WARNED!
 
-> After installing the wheel, you can use it a few ways:
+### After installing the wheel, you can use it a few ways:
 
 From the command line:
 ```text
