@@ -117,6 +117,10 @@ ctypes.cdll.LoadLibrary = lambda libname: FakeLibC() if libname == ctypes.util.f
 import os
 os.path.sep = '/'
 
+# Completely subvert the "roles" sub-action. Only supporting collection actions here
+from ansible.executor import module_common
+module_common._read_ansiballz_code = lambda no_ansiballz: ""
+module_common._get_ansiballz_code = lambda no_ansiballz: ""
 
 def execute_download_win(galaxy_commandline_args):
     """
