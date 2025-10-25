@@ -135,17 +135,16 @@ def execute_download_win(galaxy_commandline_args):
      args = ['collection', 'download', 'community.general']
      execute_download_win(args)
     """
-    # First element is not the first argument
-    args = [None] + galaxy_commandline_args
+    if galaxy_commandline_args[0] == 'collection':
+        galaxy_commandline_args = [__file__] + galaxy_commandline_args
     from ansible.cli.galaxy import main as galaxy_main
-    galaxy = galaxy_main(args=args)
+    galaxy = galaxy_main(args=galaxy_commandline_args)
     galaxy.execute_download()
 
 
 def main():
     import sys
-    print(f'Calling ansible-galaxy with {sys.argv[1:]}')
-    execute_download_win(sys.argv[1:])
+    execute_download_win(sys.argv)
 
 if __name__ == '__main__':
     main()
